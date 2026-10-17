@@ -80,6 +80,16 @@ const scanResponseSchema: Schema = {
   ],
 };
 
+function sanitizeEnvKey(raw?: string): string {
+  if (!raw) return '';
+  return raw
+    .trim()
+    .replace(/^[A-Z0-9_]+\s*=\s*/i, '')
+    .trim()
+    .replace(/^["'`]+|["'`]+$/g, '')
+    .trim();
+}
+
 function parseDataUrl(dataUrl: string): { mimeType: string; data: string } {
   const matches = dataUrl.match(/^data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+);base64,(.+)$/);
   if (matches && matches.length === 3) {
@@ -108,8 +118,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey || apiKey === 'your_google_ai_studio_key') {
+    const apiKey = sanitizeEnvKey(process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY);
+    if (
+      !apiKey ||
+      apiKey === 'your_google_ai_studio_key' ||
+      apiKey === 'AIzaSyYourGoogleAIStudioKey'
+    ) {
       return NextResponse.json(
         {
           error:
@@ -209,6 +223,16 @@ export async function POST(request: NextRequest) {
       error instanceof Error
         ? error.message
         : 'Terjadi kesalahan saat menganalisis foto pakaian.';
+    if (message.includes('API_KEY_INVALID') || message.includes('API key not valid')) {
+      return NextResponse.json(
+        {
+          error:
+            'Kunci GEMINI_API_KEY ditolak oleh Google (API_KEY_INVALID). Pastikan nilai GEMINI_API_KEY di Vercel diisi murni tanpa tanda kutip ("...") atau nama variabel, lalu klik Redeploy.',
+          code: 'INVALID_API_KEY',
+        },
+        { status: 401 }
+      );
+    }
     return NextResponse.json(
       {
         error: `Gagal melakukan kurasi AI: ${message}. Pastikan foto jelas dan tidak buram.`,

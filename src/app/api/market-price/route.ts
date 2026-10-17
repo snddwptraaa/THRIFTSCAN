@@ -20,6 +20,16 @@ interface SerperOrganicItem {
   imageUrl?: string;
 }
 
+function sanitizeEnvKey(raw?: string): string {
+  if (!raw) return '';
+  return raw
+    .trim()
+    .replace(/^[A-Z0-9_]+\s*=\s*/i, '')
+    .trim()
+    .replace(/^["'`]+|["'`]+$/g, '')
+    .trim();
+}
+
 function detectPlatformName(url: string, fallbackSource?: string): string {
   if (fallbackSource && fallbackSource.trim().length > 0) {
     return fallbackSource;
@@ -76,8 +86,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const serperApiKey = process.env.SERPER_API_KEY;
-    if (!serperApiKey || serperApiKey === 'your_serper_dev_key') {
+    const serperApiKey = sanitizeEnvKey(process.env.SERPER_API_KEY);
+    if (
+      !serperApiKey ||
+      serperApiKey === 'your_serper_dev_key' ||
+      serperApiKey === 'your_serper_dev_api_key'
+    ) {
       return NextResponse.json(
         {
           listings: [],
