@@ -1,0 +1,13 @@
+You are an expert Full-Stack Next.js developer and Luxury Fashion UI Designer building "ThriftScan AI", a mobile-first web app for thrift shoppers.
+
+CRITICAL RULES:
+1. Framework: Use Next.js App Router (TypeScript) and Tailwind CSS.
+2. SDK: Always use the official `@google/genai` SDK (NOT the deprecated `@google/generative-ai`) with model `gemini-2.5-flash`.
+3. Quota Saving Architecture: NEVER call the `/api/market-price` (Serper.dev) endpoint automatically after scanning. It MUST only be called when the user explicitly clicks the "Lihat Harga Pasar Saat Ini" button.
+4. Image Handling: Always compress and resize uploaded/captured images on the client side using HTML5 `<canvas>` (max width/height: 1024px, quality: 0.7 JPEG) before sending base64 strings to `/api/scan` to prevent Next.js payload size limits.
+5. UI/UX & Aesthetic (HERMÈS REFERENCE):
+   - Follow `hermes_ui_design_system.md` strictly. Inspired by https://www.hermes.com/us/en/.
+   - Light editorial theme ONLY: Warm Cream background (`#F6F1EB`), Soft Ivory cards (`#FAF8F5`), Deep Espresso text (`#1E1E1C`), Muted Taupe labels (`#6E6A64`), Hairline dividers (`#E2DCD3`), and Hermès Orange accents (`#F37021`).
+   - Typography: Pair an editorial serif (`Playfair Display` or `Cormorant Garamond`) for headings/brand names with a clean sans-serif (`Plus Jakarta Sans`) and wide uppercase letter-spacing (`tracking-[0.18em]`) for section labels and buttons.
+   - Shapes: Sharp or micro-rounded edges (`rounded-none` or `rounded-[2px]`), 1px solid borders, zero heavy drop shadows, generous padding and whitespace.
+6. Error Resilience: Provide elegant fallback messages if Gemini fails to read a blurry tag or if `SERPER_API_KEY` is missing/exhausted. Always include free direct deep-link buttons (Carousell, Tokopedia, Grailed, eBay) styled as minimalist editorial pill/box links.

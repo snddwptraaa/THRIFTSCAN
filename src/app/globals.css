@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #F6F1EB;
+  --bg-surface: #FAF8F5;
+  --text-primary: #1E1E1C;
+  --text-secondary: #6E6A64;
+  --accent-orange: #F37021;
+  --accent-hover: #D95D12;
+  --border-sand: #E2DCD3;
+}
+
+@theme inline {
+  --font-serif: var(--font-cormorant), Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-canvas: #F6F1EB;
+  --color-surface: #FAF8F5;
+  --color-espresso: #1E1E1C;
+  --color-taupe: #6E6A64;
+  --color-hermes: #F37021;
+  --color-hermes-hover: #D95D12;
+  --color-sand: #E2DCD3;
+}
+
+body {
+  background-color: #F6F1EB;
+  color: #1E1E1C;
+  font-family: var(--font-jakarta), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #F37021;
+  color: #FAF8F5;
+}
