@@ -1,6 +1,11 @@
 # THRIFTSCAN AI — Maison d'Expertise
 
 > **Luxury Archival & Vintage Garment Appraisal** berbasis AI Vision dan valuasi pasar *real-time*.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-thriftscan--silk.vercel.app-F37021?style=for-the-badge)](https://thriftscan-silk.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js_15-1E1E1C?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React_19-FAF8F5?style=for-the-badge&logo=react&logoColor=1E1E1C)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 **ThriftScan AI** adalah aplikasi web *mobile-first* untuk kurasi, identifikasi keaslian, estimasi era, dan valuasi harga pakaian *vintage* / *thrifting*. Dirancang dengan estetika **"Quiet Luxury & Maison Curatorial"** yang terinspirasi dari direktori editorial Hermès—mengutamakan kontras tinggi di bawah pencahayaan luar ruang, pengoperasian satu tangan (*one-thumb friendly*), dan arsitektur hemat kuota API.
 
